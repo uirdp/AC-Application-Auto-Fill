@@ -27,14 +27,23 @@ prev_date = datetime.datetime(2023, prev_month, prev_day)
 print('start: ', start_date)
 print('prev: ', prev_date)
 
-if(is_underscored) : 
-     shinsei = CreateNewForm.CreateNewForm()
-     shinsei.create_new_form(start_date, prev_date)
+while True:
+     
+     if(is_underscored) : 
+          shinsei = CreateNewForm.CreateNewForm()
+          shinsei.create_new_form(start_date, prev_date)
 
-else : 
-     shinsei = CreateFirstForm.CreateFirstForm()
-     shinsei.create_new_form(start_date, prev_date)
+     else : 
+          shinsei = CreateFirstForm.CreateFirstForm()
+          shinsei.create_new_form(start_date, prev_date) 
+          is_underscored = True  
+
+     prev_date = start_date
+     start_date += datetime.timedelta(days = 14)
+
+     if(start_date.month == 10): break
+
 
 #かならず一個くらい間違ってるところがある、なんでだろう・・・
-print('書き出しが完了しました、当該ファイルを確認、修正してください')
+print('書き出しが完了しました、ファイルを確認、修正してください')
 
