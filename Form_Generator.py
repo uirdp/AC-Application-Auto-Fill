@@ -50,11 +50,16 @@ class Form_Generator:
 
     def create_new_form(self, start_date):
         
+        season = 'winter'
+        if start_date.month() > 5 and start_date() < 10:
+            season = 'summer'
+            
+        
         document = opendocument.load(self.docname) 
         texts = document.getElementsByType(text.P)
     
         self.replace_old_dates(texts, start_date)
         self.replace_last_line(texts, start_date)
 
-        document.save('shinsei'+str(start_date.date())+'.odt')
+        document.save('shinseisho/shinsei'+str(start_date.date())+'.odt')
        
