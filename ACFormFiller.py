@@ -34,13 +34,10 @@ def fill_form():
      except:
         gui.PopupError('エラー発生が発生しました。処理を終了します。\r\n入力した値を確認してください。',
                       title='エラー', background_color='#f00' )
-        window["start_year"].update("")
-        window["start_month"].update("")
-        window["start_day"].update("")
+        #window["start_year"].update("")
+        #window["start_month"].update("")
+        #window["start_day"].update("")
         window["file_path"].update("")
-
-
-     #かならず一個くらい間違ってるところがある、なんでだろう・・・
     
 
 #--------------------------------------------
@@ -52,17 +49,19 @@ gui.theme("DarkBlue")
 col1 = [[gui.Text("年", size=(10,1), pad=((0,0),(10)))],
              [gui.Text("月", size=(10,1), pad=((0,0),(10)))],
              [gui.Text("日", size=(10,1), pad=((0,0),(10)))],
-             [gui.Text("書き換え元", size=(10,1), pad=((0,0),(10)))]]
+             [gui.Text("file", size=(10,1), pad=((0,0),(10)))]]
 
 col2 = [[gui.InputText(size=(30,1), pad=((5),(10)), key="start_year")],
              [gui.InputText(size=(30,1), pad=((5),(10)), key="start_month")],
              [gui.InputText(size=(30,1), pad=((5),(10)), key="start_day")],
-             [gui.InputText(size=(30,1), pad=((5),(10)), key="file_path")]]
+             [gui.InputText(size=(30,1), pad=((5),(10))), gui.FileBrowse(key='file_path')]]
 
 layout = [[gui.Column(col1), gui.Column(col2)],          
                  [gui.Button("実行", size=(10,1), pad=((130),(10)), key="-change_exe-")]]
 
-window = gui.Window("空調申請自動書き込み", layout, size=(360,230))
+window = gui.Window("空調申請自動書き込み", layout, size=(400,260))
+
+layout = [gui.Text("完了しました")]
 
 
 while True:
